@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gamenews.tj - Новости игр Таджикистана</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Flag_of_Tajikistan.svg/1200px-Flag_of_Tajikistan.svg.png'), 
+                            url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Flag_of_Afghanistan_%282021%29.svg/1200px-Flag_of_Afghanistan_%282021%29.svg.png'),
+                            url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Samani_Emblem.svg/1200px-Samani_Emblem.svg.png');
+            background-repeat: repeat, repeat, repeat;
+            background-position: 0px 0px, 400px 150px, 800px 300px;
+            background-size: 250px, 250px, 250px;
+            opacity: 0.95;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            color: #ffd43b;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+        
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+        
+        .admin-btn {
+            background: #ffd43b;
+            color: #333;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            margin-left: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .admin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .admin-panel {
+            background: #fff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 15px auto;
+            max-width: 500px;
+            position: relative;
+            z-index: 2;
+            display: none;
+            font-size: 14px;
+        }
+        
+        .admin-panel h3 {
+            margin-bottom: 12px;
+            color: #333;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        .form-group {
+            margin-bottom: 10px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 600;
+            color: #555;
+            font-size: 13px;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+        
+        .form-group textarea {
+            height: 70px;
+            resize: vertical;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s;
+            margin-top: 6px;
+        }
+        
+        .btn-primary:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .btn-edit, .btn-delete {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        
+        .btn-edit {
+            background: #27ae60;
+            color: white;
+            border: none;
+        }
+        
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+            border: none;
+        }
+        
+        .hero {
+            background: url('https://ixbt.online/gametech/covers/2025/08/01/nova-filepond-Q5QmLc.png?w=948') center center/cover;
+            height: 350px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .news-section {
+            padding: 50px 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #333;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #667eea;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        
+        .card-img {
+            height: 140px;
+            overflow: hidden;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .news-card:hover .card-img img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 12px;
+        }
+        
+        .card-date {
+            color: #667eea;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        
+        .card-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .card-excerpt {
+            color: #666;
+            margin-bottom: 12px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        .card-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-link svg {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .card-link:hover svg {
+            transform: translateX(3px);
+        }
+        
+        .article-page {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .article-title {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+        
+        .article-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .article-meta span {
+            margin: 0 8px;
+        }
+        
+        .article-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .article-content {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #333;
+        }
+        
+        .article-content p {
+            margin-bottom: 12px;
+        }
+        
+        .article-content blockquote {
+            border-left: 3px solid #667eea;
+            padding: 12px;
+            margin: 15px 0;
+            background: #f8f9fa;
+            font-style: italic;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .comments-section {
+            margin-top: 30px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .comments-title {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+        
+        .comment {
+            background: white;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .comment-author {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 14px;
+        }
+        
+        .comment-date {
+            font-size: 12px;
+            color: #999;
+            margin: 5px 0;
+        }
+        
+        .comment-text {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
+        
+        .add-comment {
+            margin-top: 15px;
+        }
+        
+        .add-comment textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            resize: vertical;
+            height: 60px;
+        }
+        
+        .add-comment input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            padding: 30px 0 15px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .footer-column h3 {
+            font-size: 15px;
+            margin-bottom: 12px;
+            color: #ffd43b;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 6px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 11px;
+        }
+        
+        .ad-banner {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin: 12px 0;
+            border-radius: 6px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+            font-size: 13px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 12px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 6px;
+            }
+            
+            .hero h1 {
+                font-size: 20px;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .article-title {
+                font-size: 20px;
+            }
+            
+            body {
+                background-position: 0px 0px, 200px 100px, 400px 200px;
+                background-size: 150px, 150px, 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">game<span>news.tj</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#">Новости</a></li>
+                    <li><a href="#">Обзоры</a></li>
+                    <li><a href="#">Гайды</a></li>
+                    <li><a href="#">Топы</a></li>
+                    <li><a href="#">Интервью</a></li>
+                    <li><span class="admin-btn">Админ</span></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="ad-banner">
+        📢 Рекламное место свободно! Свяжитесь с нами
+    </div>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Обновление Terraria 1.4.5 ускорит перемещение по миру</h1>
+            <p>Показали новую машину и дрифт — что ждёт игроков</p>
+        </div>
+    </div>
+
+    <div id="loginForm" class="admin-panel">
+        <h3>Вход в админ-панель</h3>
+        <form id="login">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Введите email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" placeholder="Введите пароль" required>
+            </div>
+            <button type="submit" class="btn-primary">Войти</button>
+        </form>
+    </div>
+
+    <div id="adminPanel" class="admin-panel" style="display: none;">
+        <h3>Управление новостями</h3>
+        <div style="margin-bottom: 12px; text-align: center;">
+            <button id="newsBtn" class="btn-primary" style="background: #667eea; margin-right: 6px; padding: 6px 12px; font-size: 12px;">Добавить</button>
+            <button id="adsBtn" class="btn-primary" style="background: #27ae60; margin-right: 6px; padding: 6px 12px; font-size: 12px;">Реклама</button>
+            <button id="contactsBtn" class="btn-primary" style="background: #f39c12; padding: 6px 12px; font-size: 12px;">Контакты</button>
+        </div>
+        
+        <div id="newsForm">
+            <input type="hidden" id="editId">
+            <div class="form-group">
+                <label for="newsTitle">Заголовок</label>
+                <input type="text" id="newsTitle" placeholder="Заголовок новости">
+            </div>
+            <div class="form-group">
+                <label for="newsExcerpt">Краткое описание</label>
+                <textarea id="newsExcerpt" placeholder="Краткое описание"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="newsImage">URL изображения</label>
+                <input type="text" id="newsImage" placeholder="URL изображения">
+            </div>
+            <div style="display: flex; gap: 5px;">
+                <button id="saveNews" class="btn-primary">Сохранить</button>
+                <button id="cancelEdit" class="btn-primary" style="background: #95a5a6;">Отмена</button>
+            </div>
+        </div>
+        
+        <div id="adsForm" style="display: none;">
+            <div class="form-group">
+                <label for="adTitle">Заголовок рекламы</label>
+                <input type="text" id="adTitle" placeholder="Заголовок">
+            </div>
+            <div class="form-group">
+                <label for="adContent">Текст рекламы</label>
+                <textarea id="adContent" placeholder="Текст"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="adImage">URL изображения</label>
+                <input type="text" id="adImage" placeholder="URL">
+            </div>
+            <div class="form-group">
+                <label for="adLink">Ссылка</label>
+                <input type="text" id="adLink" placeholder="Ссылка">
+            </div>
+            <button id="addAd" class="btn-primary">Добавить</button>
+        </div>
+        
+        <div id="contactsForm" style="display: none;">
+            <div class="form-group">
+                <label for="emailContact">Email</label>
+                <input type="email" id="emailContact" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="phone">Телефон</label>
+                <input type="text" id="phone" placeholder="Телефон">
+            </div>
+            <div class="form-group">
+                <label for="address">Адрес</label>
+                <input type="text" id="address" placeholder="Адрес">
+            </div>
+            <button id="saveContacts" class="btn-primary">Сохранить</button>
+        </div>
+    </div>
+
+    <div class="news-section">
+        <div class="container">
+            <h2 class="section-title">Последние новости</h2>
+            <div class="news-grid" id="newsContainer">
+                <div class="news-card" data-id="1">
+                    <div class="card-img">
+                        <img src="https://ixbt.online/gametech/covers/2025/08/01/nova-filepond-Q5QmLc.png?w=948" alt="Terraria 1.4.5">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-date">1 августа 2025</div>
+                        <h3 class="card-title">Обновление Terraria 1.4.5 ускорит перемещение по миру</h3>
+                        <p class="card-excerpt">Разработчики показали тизер нового контента — включая машину, способную ездить по стенам.</p>
+                        <a href="#article" class="card-link">
+                            Читать далее
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ad-banner">
+        📢 Реклама: Играйте в лучшие онлайн-игры!
+    </div>
+
+    <div class="container">
+        <article id="article" class="article-page">
+            <h1 class="article-title">Обновление Terraria 1.4.5 ускорит перемещение по миру — показали машину и дрифт</h1>
+            
+            <div class="article-meta">
+                <span>1 августа 2025</span>
+                <span>Автор: game<span>news.tj</span></span>
+                <span>Источник: Re-Logic</span>
+            </div>
+            
+            <div class="article-image">
+                <img src="https://ixbt.online/gametech/covers/2025/08/01/nova-filepond-Q5QmLc.png?w=948" alt="Обновление Terraria 1.4.5">
+            </div>
+            
+            <div class="article-content">
+                <p>Работа над очередным последним обновлением для Terraria потихоньку продолжается.</p>
+                
+                <p>Разработчики Terraria выпустили июльский дневник и рассказали о дальнейших планах на игру. На этот раз показали тизер нового контента.</p>
+                
+                <blockquote>
+                    Вдохновлённая отчасти гоночным дроном Kwad, команда добавила совершенно новую машину (RC Car), на которой вы можете гонять по мирам Terraria. Она даже может взбираться на стены! Нам не терпится увидеть, какие безумные гоночные трассы придумает сообщество, чтобы бросить вызов даже самым отчаянным гонщикам.
+                </blockquote>
+                
+                <p>Анимацию новой машины и её возможностей можно посмотреть по следующей ссылке: <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=123456789" target="_blank">https://steamcommunity.com/sharedfiles/filedetails/?id=123456789</a></p>
+                
+                <p>Дату релиза обновления 1.4.5 для Terraria пока не назвали. Однако разработчики подчеркивают, что работают над контентом с полной отдачей и хотят сделать его максимально интересным для игроков.</p>
+                
+                <p>Новая машина, способная ездить по стенам и выполнять дрифт, станет серьёзным прорывом в механике перемещения по миру Terraria. Это позволит игрокам не только быстрее исследовать локации, но и создавать уникальные гоночные треки, используя особенности рельефа и подземных тоннелей.</p>
+                
+                <p>Сообщество уже активно обсуждает потенциальные применения новой техники — от скоростных заездов до сложных паркуров и соревнований на выживание.</p>
+                
+                <p><strong>Автор обложки:</strong> Re-Logic. <strong>Источник изображения:</strong> steamcommunity.com</p>
+                
+                <p><strong>Автор скриншотов:</strong> Re-Logic. <strong>Источник изображений:</strong> store.steampowered.com</p>
+            </div>
+            
+            <div class="comments-section">
+                <h3 class="comments-title">Комментарии</h3>
+                
+                <div class="comment">
+                    <div class="comment-author">Анонимный пользователь</div>
+                    <div class="comment-date">1 августа 2025, 10:30</div>
+                    <div class="comment-text">Отличная новость! Жду с нетерпением новую машину в игре.</div>
+                </div>
+                
+                <div class="comment">
+                    <div class="comment-author">Геймер_ТД</div>
+                    <div class="comment-date">1 августа 2025, 11:15</div>
+                    <div class="comment-text">Надеюсь, что обновление выйдет в ближайшее время. Уже скучаю по новому контенту!</div>
+                </div>
+                
+                <div class="add-comment">
+                    <textarea id="commentText" placeholder="Оставьте свой комментарий..."></textarea>
+                    <input type="text" id="commentName" placeholder="Ваше имя">
+                    <button id="addComment" class="btn-primary" style="padding: 6px 12px; font-size: 13px; width: auto;">Добавить комментарий</button>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Новости</h3>
+                    <ul>
+                        <li><a href="#">ПК игры</a></li>
+                        <li><a href="#">Консоли</a></li>
+                        <li><a href="#">Мобильные игры</a></li>
+                        <li><a href="#">Киберспорт</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Обзоры</h3>
+                    <ul>
+                        <li><a href="#">Последние обзоры</a></li>
+                        <li><a href="#">Топ игр месяца</a></li>
+                        <li><a href="#">Ретро игры</a></li>
+                        <li><a href="#">Индийские проекты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Гайды</h3>
+                    <ul>
+                        <li><a href="#">Как пройти</a></li>
+                        <li><a href="#">Секреты и баги</a></li>
+                        <li><a href="#">Лучшее снаряжение</a></li>
+                        <li><a href="#">Советы новичкам</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><a href="mailto:bora60150@gmail.com">bora60150@gmail.com</a></li>
+                        <li><a href="tel:+992900000000">+992 90 000-00-00</a></li>
+                        <li>Душанбе, ул. Ирчи 123</li>
+                        <li>Пн-Пт: 9:00-18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 gamenews.tj — Новости игр Таджикистана. Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const adminBtn = document.querySelector('.admin-btn');
+            const loginForm = document.getElementById('loginForm');
+            const adminPanel = document.getElementById('adminPanel');
+            const newsForm = document.getElementById('newsForm');
+            const adsForm = document.getElementById('adsForm');
+            const contactsForm = document.getElementById('contactsForm');
+            const newsBtn = document.getElementById('newsBtn');
+            const adsBtn = document.getElementById('adsBtn');
+            const contactsBtn = document.getElementById('contactsBtn');
+            const newsContainer = document.getElementById('newsContainer');
+            const addCommentBtn = document.getElementById('addComment');
+            
+            // Show login form when admin button is clicked
+            adminBtn.addEventListener('click', function() {
+                if (loginForm.style.display === 'block') {
+                    loginForm.style.display = 'none';
+                } else {
+                    loginForm.style.display = 'block';
+                    adminPanel.style.display = 'none';
+                }
+            });
+            
+            // Handle login
+            document.getElementById('login').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                if (email === 'bora60150@gmail.com' && password === 'Alimuhamad.2010') {
+                    alert('Добро пожаловать в админ-панель!');
+                    loginForm.style.display = 'none';
+                    adminPanel.style.display = 'block';
+                    newsBtn.click(); // Show news form by default
+                } else {
+                    alert('Неверные учетные данные!');
+                }
+            });
+            
+            // Switch between admin panel tabs
+            newsBtn.addEventListener('click', function() {
+                newsForm.style.display = 'block';
+                adsForm.style.display = 'none';
+                contactsForm.style.display = 'none';
+            });
+            
+            adsBtn.addEventListener('click', function() {
+                newsForm.style.display = 'none';
+                adsForm.style.display = 'block';
+                contactsForm.style.display = 'none';
+            });
+            
+            contactsBtn.addEventListener('click', function() {
+                newsForm.style.display = 'none';
+                adsForm.style.display = 'none';
+                contactsForm.style.display = 'block';
+            });
+            
+            // Cancel edit
+            document.getElementById('cancelEdit').addEventListener('click', function() {
+                document.getElementById('editId').value = '';
+                document.getElementById('newsTitle').value = '';
+                document.getElementById('newsExcerpt').value = '';
+                document.getElementById('newsImage').value = '';
+                newsBtn.click(); // Switch back to news list
+            });
+            
+            // Add or edit news
+            document.getElementById('saveNews').addEventListener('click', function() {
+                const id = document.getElementById('editId').value;
+                const title = document.getElementById('newsTitle').value;
+                const excerpt = document.getElementById('newsExcerpt').value;
+                const image = document.getElementById('newsImage').value;
+                
+                if (!title || !excerpt || !image) {
+                    alert('Заполните все поля!');
+                    return;
+                }
+                
+                if (id) {
+                    // Edit existing news
+                    const card = document.querySelector(`.news-card[data-id="${id}"]`);
+                    if (card) {
+                        card.querySelector('.card-title').textContent = title;
+                        card.querySelector('.card-excerpt').textContent = excerpt;
+                        card.querySelector('.card-img img').src = image;
+                        card.querySelector('.card-date').textContent = new Date().toLocaleDateString('ru-RU');
+                    }
+                    alert('Новость обновлена!');
+                } else {
+                    // Add new news
+                    const newsId = Date.now(); // Simple unique ID
+                    const newsCard = document.createElement('div');
+                    newsCard.className = 'news-card';
+                    newsCard.setAttribute('data-id', newsId);
+                    newsCard.innerHTML = `
+                        <div class="card-img">
+                            <img src="${image}" alt="${title}">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-date">${new Date().toLocaleDateString('ru-RU')}</div>
+                            <h3 class="card-title">${title}</h3>
+                            <p class="card-excerpt">${excerpt}</p>
+                            <div style="display: flex; align-items: center;">
+                                <a href="#article" class="card-link" style="margin-right: 10px;">
+                                    Читать далее
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                                <button class="btn-edit" data-id="${newsId}">Правка</button>
+                                <button class="btn-delete" data-id="${newsId}">Удалить</button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    newsContainer.insertBefore(newsCard, newsContainer.firstChild);
+                    alert('Новость добавлена!');
+                }
+                
+                // Clear form and switch back to list
+                document.getElementById('editId').value = '';
+                document.getElementById('newsTitle').value = '';
+                document.getElementById('newsExcerpt').value = '';
+                document.getElementById('newsImage').value = '';
+                newsBtn.click();
+            });
+            
+            // Edit news
+            newsContainer.addEventListener('click', function(e) {
+                if (e.target.classList.contains('btn-edit')) {
+                    const id = e.target.getAttribute('data-id');
+                    const card = document.querySelector(`.news-card[data-id="${id}"]`);
+                    
+                    if (card) {
+                        document.getElementById('editId').value = id;
+                        document.getElementById('newsTitle').value = card.querySelector('.card-title').textContent;
+                        document.getElementById('newsExcerpt').value = card.querySelector('.card-excerpt').textContent;
+                        document.getElementById('newsImage').value = card.querySelector('.card-img img').src;
+                        
+                        newsBtn.click(); // Switch to news form
+                        window.scrollTo(0, 0); // Scroll to top
+                    }
+                }
+                
+                // Delete news
+                if (e.target.classList.contains('btn-delete')) {
+                    if (confirm('Вы действительно хотите удалить эту новость?')) {
+                        const id = e.target.getAttribute('data-id');
+                        const card = document.querySelector(`.news-card[data-id="${id}"]`);
+                        if (card) {
+                            card.remove();
+                            alert('Новость удалена!');
+                        }
+                    }
+                }
+            });
+            
+            // Add advertisement
+            document.getElementById('addAd').addEventListener('click', function() {
+                const title = document.getElementById('adTitle').value;
+                const content = document.getElementById('adContent').value;
+                const image = document.getElementById('adImage').value;
+                const link = document.getElementById('adLink').value;
+                
+                if (!title || !content || !image || !link) {
+                    alert('Заполните все поля!');
+                    return;
+                }
+                
+                const adBanner = document.createElement('div');
+                adBanner.className = 'ad-banner';
+                adBanner.style.background = 'linear-gradient(45deg, #9b59b6, #8e44ad)';
+                adBanner.innerHTML = `
+                    <a href="${link}" target="_blank" style="color: white; text-decoration: none;">
+                        <strong>${title}</strong><br>
+                        ${content}
+                    </a>
+                `;
+                
+                document.querySelector('.hero').insertAdjacentElement('afterend', adBanner);
+                
+                document.getElementById('adTitle').value = '';
+                document.getElementById('adContent').value = '';
+                document.getElementById('adImage').value = '';
+                document.getElementById('adLink').value = '';
+                
+                alert('Реклама добавлена!');
+            });
+            
+            // Save contacts
+            document.getElementById('saveContacts').addEventListener('click', function() {
+                const email = document.getElementById('emailContact').value;
+                const phone = document.getElementById('phone').value;
+                const address = document.getElementById('address').value;
+                
+                if (!email) {
+                    alert('Введите email!');
+                    return;
+                }
+                
+                const contactColumn = document.querySelector('.footer-column:nth-child(4) ul');
+                contactColumn.innerHTML = '';
+                
+                const emailLi = document.createElement('li');
+                emailLi.innerHTML = `<a href="mailto:${email}">${email}</a>`;
+                contactColumn.appendChild(emailLi);
+                
+                if (phone) {
+                    const phoneLi = document.createElement('li');
+                    phoneLi.innerHTML = `<a href="tel:${phone.replace(/\s/g, '')}">${phone}</a>`;
+                    contactColumn.appendChild(phoneLi);
+                }
+                
+                if (address) {
+                    const addressLi = document.createElement('li');
+                    addressLi.textContent = address;
+                    contactColumn.appendChild(addressLi);
+                }
+                
+                alert('Контакты сохранены!');
+            });
+            
+            // Add comment
+            addCommentBtn.addEventListener('click', function() {
+                const commentText = document.getElementById('commentText').value;
+                const commentName = document.getElementById('commentName').value || 'Анонимный пользователь';
+                
+                if (!commentText) {
+                    alert('Введите текст комментария!');
+                    return;
+                }
+                
+                const commentsSection = document.querySelector('.comments-section');
+                const comment = document.createElement('div');
+                comment.className = 'comment';
+                comment.innerHTML = `
+                    <div class="comment-author">${commentName}</div>
+                    <div class="comment-date">${new Date().toLocaleDateString('ru-RU')} ${new Date().toLocaleTimeString('ru-RU', {hour: '2-digit', minute:'2-digit'})}</div>
+                    <div class="comment-text">${commentText}</div>
+                `;
+                
+                commentsSection.insertBefore(comment, commentsSection.children[commentsSection.children.length - 1]);
+                
+                document.getElementById('commentText').value = '';
+                document.getElementById('commentName').value = '';
+            });
+        });
+    </script>
+</body>
+</html>
